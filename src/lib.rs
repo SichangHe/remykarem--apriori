@@ -3,6 +3,7 @@ pub mod rules;
 pub mod types;
 mod wrapper;
 
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
 use types::{FrequentItemsets, Inventory, RawTransaction, RawTransactionId};
 
@@ -68,6 +69,7 @@ pub fn generate_frequent_itemsets_id(
     itemsets::count::generate_frequent_itemsets_id(raw_transactions, min_support, max_length)
 }
 
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Rule {
     pub antecedent: HashSet<String>,
     pub consequent: HashSet<String>,
